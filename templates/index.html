@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Planning Login</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css', v='theme-sync-1') }}">
+</head>
+
+<body data-theme="dark">
+  <main class="page-shell">
+    <section class="hero-panel">
+      <div class="hero-content">
+        <p class="eyebrow">Event Management System</p>
+
+        <h1>Plan every event and coordinate every team from one place.</h1>
+
+        <p class="hero-copy">
+          Managers can assign users, approve workers, and track event readiness while each specialist
+          sees the work that belongs to them.
+        </p>
+
+        <section class="hero-visual" aria-label="Event planning preview">
+          <div class="visual-card visual-main">
+            <span class="visual-label">Live Event Board</span>
+            <strong>Spring Carnival</strong>
+            <p>Decor, food, games, seating, and lighting are all tracked beside the event checklist.</p>
+
+            <div class="visual-progress" aria-hidden="true">
+              <span></span>
+            </div>
+
+            <div class="visual-tags" aria-hidden="true">
+              <span>JSON backed</span>
+              <span>Worker approval</span>
+              <span>Checklist tracking</span>
+            </div>
+          </div>
+
+          <div class="visual-floating visual-note">
+            <strong>Approval Queue</strong>
+            <p>Workers register first, then managers approve or reject them from the dashboard.</p>
+          </div>
+
+          <div class="visual-floating visual-ready">
+            <strong>Role Assignment</strong>
+            <p>Approved workers can be attached to decoration, food, games, seating, and lighting tasks.</p>
+          </div>
+        </section>
+
+        <section class="feature-list" aria-label="Platform highlights">
+          <article>
+            <span>Manager control</span>
+            <p>Create events, review workers, and assign the right people to each event workflow.</p>
+          </article>
+          <article>
+            <span>User workspace</span>
+            <p>Assigned users keep checklist progress moving and stay focused on event readiness.</p>
+          </article>
+          <article>
+            <span>Worker portal</span>
+            <p>Approved workers can log in to see exactly which events need their role-based support.</p>
+          </article>
+        </section>
+
+        <section class="feature-highlight" aria-label="Workflow summary">
+          <div class="highlight-card primary">
+            <strong>What it stores</strong>
+            <p>Managers, users, workers, events, assignments, and checklist tasks in JSON files.</p>
+          </div>
+          <div class="highlight-card">
+            <strong>What it automates</strong>
+            <p>Status badges, approval workflow, event countdowns, and role-specific worker assignment.</p>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="login-panel">
+      <div class="login-card">
+        <div class="theme-switch" aria-label="Theme switcher">
+          <button class="theme-button active" type="button" data-theme="dark" aria-pressed="true">Dark</button>
+          <button class="theme-button" type="button" data-theme="light" aria-pressed="false">Light</button>
+        </div>
+
+        <div class="login-intro">
+          <p class="eyebrow">Secure Access</p>
+          <h2>Login or register to continue.</h2>
+          <p class="form-copy">Managers, users, and workers each get their own entry point into the same event workflow.</p>
+        </div>
+
+        <div class="auth-mode-switch">
+          <button class="mode-button active" type="button" data-mode="login" aria-selected="true">Login</button>
+          <button class="mode-button" type="button" data-mode="register" aria-selected="false">Register</button>
+        </div>
+
+        <div class="auth-panel active" id="login-panel">
+          <div class="tab-header three-tabs">
+            <button class="tab-button active" type="button" data-tab="manager" aria-selected="true">Manager</button>
+            <button class="tab-button" type="button" data-tab="user" aria-selected="false">User</button>
+            <button class="tab-button" type="button" data-tab="worker" aria-selected="false">Worker</button>
+          </div>
+
+          <form class="login-form active" id="manager-form" data-role="manager">
+            <h2>Manager Access</h2>
+            <p class="form-copy">Create events, approve workers, and coordinate all assignments.</p>
+
+            <label for="manager-email">Email</label>
+            <input id="manager-email" name="email" type="email" autocomplete="username" required>
+
+            <label for="manager-password">Password</label>
+            <div class="password-field">
+              <input id="manager-password" name="password" type="password" autocomplete="current-password" required>
+              <button class="password-toggle" type="button" data-target="manager-password">Show</button>
+            </div>
+
+            <label for="manager-code">Manager Code</label>
+            <input id="manager-code" name="code" type="text" required>
+
+            <button class="submit-button" type="submit">Login as Manager</button>
+          </form>
+
+          <form class="login-form" id="user-form" data-role="user">
+            <h2>User Access</h2>
+            <p class="form-copy">Open assigned events and update checklist progress.</p>
+
+            <label for="user-email">Email</label>
+            <input id="user-email" name="email" type="email" autocomplete="username" required>
+
+            <label for="user-password">Password</label>
+            <div class="password-field">
+              <input id="user-password" name="password" type="password" autocomplete="current-password" required>
+              <button class="password-toggle" type="button" data-target="user-password">Show</button>
+            </div>
+
+            <label for="user-event-id">Event ID</label>
+            <input id="user-event-id" name="eventId" type="text" required>
+
+            <button class="submit-button" type="submit">Login as User</button>
+          </form>
+
+          <form class="login-form" id="worker-form" data-role="worker">
+            <h2>Worker Access</h2>
+            <p class="form-copy">Approved workers can view events assigned to their specialty.</p>
+
+            <label for="worker-email">Email</label>
+            <input id="worker-email" name="email" type="email" autocomplete="username" required>
+
+            <label for="worker-password">Password</label>
+            <div class="password-field">
+              <input id="worker-password" name="password" type="password" autocomplete="current-password" required>
+              <button class="password-toggle" type="button" data-target="worker-password">Show</button>
+            </div>
+
+            <button class="submit-button" type="submit">Login as Worker</button>
+          </form>
+
+          <p class="status-message" id="status-message" aria-live="polite"></p>
+        </div>
+
+        <div class="auth-panel" id="register-panel">
+          <div class="tab-header">
+            <button class="register-tab-button active" type="button" data-register-tab="user" aria-selected="true">User</button>
+            <button class="register-tab-button" type="button" data-register-tab="worker" aria-selected="false">Worker</button>
+          </div>
+
+          <form class="register-form active" id="user-register-form">
+            <h2>Create User Account</h2>
+            <p class="form-copy">Register a user, then assign that user to an event from the manager dashboard.</p>
+
+            <label for="register-name">Name</label>
+            <input id="register-name" name="name" type="text" required>
+
+            <label for="register-email">Email</label>
+            <input id="register-email" name="email" type="email" required>
+
+            <label for="register-password">Password</label>
+            <div class="password-field">
+              <input id="register-password" name="password" type="password" required>
+              <button class="password-toggle" type="button" data-target="register-password">Show</button>
+            </div>
+
+            <button class="submit-button" type="submit">Create User Account</button>
+            <p class="status-message" id="user-register-status" aria-live="polite"></p>
+          </form>
+
+          <form class="register-form" id="worker-register-form">
+            <h2>Register as Worker</h2>
+            <p class="form-copy">Choose your specialty and submit your request for manager approval.</p>
+
+            <label for="worker-register-name">Name</label>
+            <input id="worker-register-name" name="name" type="text" required>
+
+            <label for="worker-register-email">Email</label>
+            <input id="worker-register-email" name="email" type="email" required>
+
+            <label for="worker-register-password">Password</label>
+            <div class="password-field">
+              <input id="worker-register-password" name="password" type="password" required>
+              <button class="password-toggle" type="button" data-target="worker-register-password">Show</button>
+            </div>
+
+            <label for="worker-register-role">Worker Role</label>
+            <select id="worker-register-role" name="role" required>
+              <option value="">Select a role</option>
+              {% for role in worker_roles %}
+              <option value="{{ role }}">{{ role }}</option>
+              {% endfor %}
+            </select>
+
+            <button class="submit-button" type="submit">Submit Worker Request</button>
+            <p class="status-message" id="worker-register-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/script.js', v='theme-sync-1') }}"></script>
+</body>
+</html>

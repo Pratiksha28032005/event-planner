@@ -1,0 +1,82 @@
+{
+  "users": [
+    {
+      "id": "MGR-1",
+      "name": "Riya Sharma",
+      "email": "manager@event.com",
+      "password": "Manager@123",
+      "role": "manager",
+      "code": "MGR-2026",
+      "eventIds": []
+    },
+    {
+      "id": "USR-1",
+      "name": "Aman Verma",
+      "email": "user@event.com",
+      "password": "User@123",
+      "role": "user",
+      "eventIds": [
+        "EVT-101"
+      ]
+    },
+    {
+      "id": "USR-2",
+      "name": "Neha Gupta",
+      "email": "guest@event.com",
+      "password": "User@123",
+      "role": "user",
+      "eventIds": [
+        "EVT-102"
+      ]
+    },
+    {
+      "id": "USR-3",
+      "name": "rajesh",
+      "email": "rajesh@gmail.com",
+      "password": "23`213",
+      "role": "user",
+      "eventIds": [
+        "EVT-103",
+        "EVT-106"
+      ]
+    },
+    {
+      "id": "USR-4",
+      "name": "hitesh",
+      "email": "hitu@event.com",
+      "password": "User@123",
+      "role": "user",
+      "eventIds": [
+        "EVT-104"
+      ]
+    },
+    {
+      "id": "USR-5",
+      "name": "hello",
+      "email": "me.prakruthi.25@gmail.com",
+      "password": "1234",
+      "role": "user",
+      "eventIds": [
+        "EVT-105"
+      ]
+    },
+    {
+      "id": "USR-6",
+      "name": "Pratiksha D Naik",
+      "email": "hii@gmail.com",
+      "password": "hello",
+      "role": "user",
+      "eventIds": [
+        "EVT-106"
+      ]
+    },
+    {
+      "id": "USR-7",
+      "name": "hello",
+      "email": "heello@gmail.com",
+      "password": "hello",
+      "role": "user",
+      "eventIds": []
+    }
+  ]
+}

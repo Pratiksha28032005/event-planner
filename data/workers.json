@@ -1,0 +1,44 @@
+{
+  "workers": [
+    {
+      "id": "WRK-1",
+      "name": "hitesh",
+      "email": "hitesh@event.com",
+      "password": "hitu",
+      "role": "Decorator",
+      "status": "approved"
+    },
+    {
+      "id": "WRK-2",
+      "name": "Navya",
+      "email": "navya@gmail.com",
+      "password": "navya",
+      "role": "Lighting Technician",
+      "status": "approved"
+    },
+    {
+      "id": "WRK-3",
+      "name": "prapti",
+      "email": "prapti@gmail.com",
+      "password": "[rapti",
+      "role": "Food Vendor",
+      "status": "approved"
+    },
+    {
+      "id": "WRK-4",
+      "name": "sneha",
+      "email": "sneha@gmail.com",
+      "password": "sneha",
+      "role": "Game Organizer",
+      "status": "approved"
+    },
+    {
+      "id": "WRK-5",
+      "name": "parinitha",
+      "email": "parinitha@gmail.com",
+      "password": "pari",
+      "role": "Seating Manager",
+      "status": "approved"
+    }
+  ]
+}

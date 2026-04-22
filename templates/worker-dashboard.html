@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Worker Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css', v='theme-sync-1') }}">
+</head>
+<body data-dashboard="worker" data-theme="dark">
+  <main class="dashboard-shell">
+    <div class="dashboard-backdrop dashboard-backdrop-one"></div>
+    <div class="dashboard-backdrop dashboard-backdrop-two"></div>
+
+    <div class="workspace-shell">
+      <aside class="sidebar-panel glass-panel">
+        <div class="sidebar-brand">
+          <p class="eyebrow">Worker Assignment Space</p>
+          <h1>Role Dashboard</h1>
+          <p>Jump between your quick summary and your live assignments from a cleaner side panel.</p>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="Dashboard sections">
+          <button class="sidebar-link active" type="button" data-section-target="overview">
+            <span>Dashboard</span>
+            <small>Role pulse and countdowns</small>
+          </button>
+          <button class="sidebar-link" type="button" data-section-target="events">
+            <span>Assignments</span>
+            <small>Your event boards</small>
+          </button>
+        </nav>
+
+        <div class="sidebar-note">
+          <span class="panel-label">Role-first view</span>
+          <strong>See your work without the mess.</strong>
+          <p>Your assignments now sit in their own section so the dashboard feels lighter and more organized.</p>
+        </div>
+      </aside>
+
+      <section class="dashboard-main">
+        <header class="topbar">
+          <div class="theme-switch" aria-label="Theme switcher">
+          <button class="theme-button active" type="button" data-theme="dark" aria-pressed="true">Dark</button>
+          <button class="theme-button" type="button" data-theme="light" aria-pressed="false">Light</button>
+          </div>
+          <div>
+            <p class="eyebrow">Worker Workspace</p>
+            <h1 id="welcome-title">Worker Dashboard</h1>
+          </div>
+          <div class="topbar-actions">
+            <span class="role-pill" id="role-pill"></span>
+            <button class="ghost-button" id="logout-button" type="button">Logout</button>
+          </div>
+        </header>
+
+        <section class="dashboard-section active" data-section="overview">
+          <section class="hero-panel">
+            <div class="hero-copy">
+              <p class="hero-kicker">Specialist runway</p>
+              <h2 id="hero-focus">See every assignment at a glance.</h2>
+              <p id="hero-description">
+                Keep your specialty front and center with a sharper view of timing, ownership, and event readiness.
+              </p>
+            </div>
+            <div class="hero-insights">
+              <article class="hero-highlight">
+                <span class="hero-label" id="marquee-label">Role focus</span>
+                <strong id="marquee-value">Your craft matters</strong>
+                <p id="marquee-note">Assigned events will surface here once a manager connects your role.</p>
+              </article>
+              <div class="hero-meta-grid">
+                <article class="hero-meta-card">
+                  <span>Assignments</span>
+                  <strong id="hero-event-count">0</strong>
+                </article>
+                <article class="hero-meta-card">
+                  <span>Open tasks</span>
+                  <strong id="hero-open-count">0</strong>
+                </article>
+                <article class="hero-meta-card">
+                  <span>Next countdown</span>
+                  <strong id="hero-deadline">None</strong>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <section class="spotlight-grid" id="spotlight-grid"></section>
+          <section class="summary-grid" id="summary-grid"></section>
+        </section>
+
+        <section class="dashboard-section" data-section="events">
+          <section class="events-section user-events-section glass-panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Your production board</p>
+                <h2>Your Event Assignments</h2>
+              </div>
+              <p id="events-caption">Workers can review their approved role assignments and check event readiness.</p>
+            </div>
+            <div class="events-grid" id="events-grid"></div>
+          </section>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/dashboard.js', v='theme-sync-1') }}"></script>
+</body>
+</html>

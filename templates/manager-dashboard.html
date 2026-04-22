@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manager Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css', v='theme-sync-1') }}">
+</head>
+<body data-dashboard="manager" data-theme="dark">
+  <main class="dashboard-shell">
+    <div class="dashboard-backdrop dashboard-backdrop-one"></div>
+    <div class="dashboard-backdrop dashboard-backdrop-two"></div>
+
+    <div class="workspace-shell">
+      <aside class="sidebar-panel glass-panel">
+        <div class="sidebar-brand">
+          <p class="eyebrow">Manager Control Center</p>
+          <h1>Event Dashboard</h1>
+          <p>Move between overview, creation, approvals, and event boards without everything feeling packed together.</p>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="Dashboard sections">
+          <button class="sidebar-link active" type="button" data-section-target="overview">
+            <span>Dashboard</span>
+            <small>Summary and live pulse</small>
+          </button>
+          <button class="sidebar-link" type="button" data-section-target="create">
+            <span>Create Event</span>
+            <small>Build a fresh event brief</small>
+          </button>
+          <button class="sidebar-link" type="button" data-section-target="approvals">
+            <span>Worker Queue</span>
+            <small>Approve or reject requests</small>
+          </button>
+          <button class="sidebar-link" type="button" data-section-target="events">
+            <span>All Events</span>
+            <small>Track every event board</small>
+          </button>
+        </nav>
+
+        <div class="sidebar-note">
+          <span class="panel-label">Workspace flow</span>
+          <strong>One role. Cleaner sections.</strong>
+          <p>Each area now opens in its own dashboard view so the page feels lighter and easier to use.</p>
+        </div>
+      </aside>
+
+      <section class="dashboard-main">
+        <div class="theme-switch" aria-label="Theme switcher">
+          <button class="theme-button active" type="button" data-theme="dark" aria-pressed="true">Dark</button>
+          <button class="theme-button" type="button" data-theme="light" aria-pressed="false">Light</button>
+        </div>
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Manager Workspace</p>
+            <h1 id="welcome-title">Manager Dashboard</h1>
+          </div>
+          <div class="topbar-actions">
+            <span class="role-pill" id="role-pill"></span>
+            <button class="ghost-button" id="logout-button" type="button">Logout</button>
+          </div>
+        </header>
+
+        <section class="dashboard-section active" data-section="overview">
+          <section class="hero-panel">
+            <div class="hero-copy">
+              <p class="hero-kicker">Creative event command</p>
+              <h2 id="hero-focus">Shape the next unforgettable celebration.</h2>
+              <p id="hero-description">
+                Turn approvals, assignments, checklists, and event timing into one polished operational dashboard.
+              </p>
+            </div>
+            <div class="hero-insights">
+              <article class="hero-highlight">
+                <span class="hero-label" id="marquee-label">Live pulse</span>
+                <strong id="marquee-value">Event flow ready</strong>
+                <p id="marquee-note">Create an event to start building your production board.</p>
+              </article>
+              <div class="hero-meta-grid">
+                <article class="hero-meta-card">
+                  <span>Events</span>
+                  <strong id="hero-event-count">0</strong>
+                </article>
+                <article class="hero-meta-card">
+                  <span>Open tasks</span>
+                  <strong id="hero-open-count">0</strong>
+                </article>
+                <article class="hero-meta-card">
+                  <span>Next deadline</span>
+                  <strong id="hero-deadline">None</strong>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <section class="spotlight-grid" id="spotlight-grid"></section>
+          <section class="summary-grid" id="summary-grid"></section>
+        </section>
+
+        <section class="dashboard-section" data-section="create">
+          <form class="event-form glass-panel" id="event-form">
+            <div class="panel-heading">
+              <p class="eyebrow">Event Studio</p>
+              <h2>Create Event</h2>
+              <p>Build a polished event brief with task checkpoints and role-based worker assignments.</p>
+            </div>
+
+            <label for="event-name">Event Name</label>
+            <input id="event-name" name="name" type="text" placeholder="Annual Day" required>
+
+            <label for="event-date">Event Date</label>
+            <input id="event-date" name="date" type="date" required>
+
+            <label for="event-venue">Venue</label>
+            <input id="event-venue" name="venue" type="text" placeholder="Hall A" required>
+
+            <label for="event-user">Assign User</label>
+            <select id="event-user" name="userId" required></select>
+
+            <label for="event-tasks">Checklist Tasks</label>
+            <textarea id="event-tasks" name="tasks" rows="4" placeholder="Book projector, Confirm caterer, Arrange badges" required></textarea>
+
+            <div class="assignments-block">
+              <div class="form-section-copy">
+                <h3>Assign Approved Workers</h3>
+                <p>Link the right specialists to each event so execution feels coordinated from day one.</p>
+              </div>
+              <div class="worker-assignment-grid">
+                {% for role in worker_roles %}
+                <div class="worker-assignment-field">
+                  <label for="worker-role-{{ loop.index0 }}">{{ role }}</label>
+                  <select
+                    id="worker-role-{{ loop.index0 }}"
+                    class="worker-role-select"
+                    data-worker-role="{{ role }}"
+                  >
+                    <option value="">No worker selected</option>
+                  </select>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+
+            <button class="primary-button" type="submit">Create Event</button>
+          </form>
+        </section>
+
+        <section class="dashboard-section" data-section="approvals">
+          <section class="events-section glass-panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Crew approvals</p>
+                <h2>Worker Approval Queue</h2>
+                <p>Review registrations and unlock the specialists who will shape each experience.</p>
+              </div>
+            </div>
+            <div class="workers-layout">
+              <div>
+                <div class="subheading-row">
+                  <h3>Pending Approval</h3>
+                  <span class="mini-pill" id="pending-worker-count">0 pending</span>
+                </div>
+                <div class="workers-grid" id="pending-workers-grid"></div>
+              </div>
+              <div>
+                <div class="subheading-row">
+                  <h3>Worker Directory</h3>
+                  <span class="mini-pill" id="approved-worker-count">0 approved</span>
+                </div>
+                <div class="workers-grid" id="worker-directory-grid"></div>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section class="dashboard-section" data-section="events">
+          <section class="events-section glass-panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Event runway</p>
+                <h2>All Events</h2>
+              </div>
+              <p id="events-caption">Managers can create events, assign users, assign workers, and update checklist items.</p>
+            </div>
+            <div class="events-grid" id="events-grid"></div>
+          </section>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/dashboard.js', v='theme-sync-1') }}"></script>
+</body>
+</html>

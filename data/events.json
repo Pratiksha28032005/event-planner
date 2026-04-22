@@ -1,0 +1,156 @@
+{
+  "events": [
+    {
+      "id": "EVT-101",
+      "name": "Annual Day",
+      "date": "2026-04-24",
+      "venue": "Hall A",
+      "assignedUserId": "USR-1",
+      "tasks": [
+        {
+          "id": "EVT-101-TASK-1",
+          "title": "Book projector",
+          "done": true
+        },
+        {
+          "id": "EVT-101-TASK-2",
+          "title": "Confirm sound check",
+          "done": true
+        },
+        {
+          "id": "EVT-101-TASK-3",
+          "title": "Prepare stage banner",
+          "done": false
+        }
+      ]
+    },
+    {
+      "id": "EVT-102",
+      "name": "Science Fair",
+      "date": "2026-05-03",
+      "venue": "Expo Center",
+      "assignedUserId": "USR-2",
+      "tasks": [
+        {
+          "id": "EVT-102-TASK-1",
+          "title": "Arrange registration desk",
+          "done": true
+        },
+        {
+          "id": "EVT-102-TASK-2",
+          "title": "Send judge invites",
+          "done": true
+        },
+        {
+          "id": "EVT-102-TASK-3",
+          "title": "Print participant badges",
+          "done": true
+        }
+      ]
+    },
+    {
+      "id": "EVT-103",
+      "name": "dance competition",
+      "date": "2026-04-22",
+      "venue": "stadium ",
+      "assignedUserId": "USR-3",
+      "tasks": [
+        {
+          "id": "EVT-103-TASK-1",
+          "title": "stage setup",
+          "done": true
+        },
+        {
+          "id": "EVT-103-TASK-2",
+          "title": "songs",
+          "done": true
+        }
+      ]
+    },
+    {
+      "id": "EVT-104",
+      "name": "mango mela",
+      "date": "2026-04-19",
+      "venue": "ground",
+      "assignedUserId": "USR-6",
+      "tasks": [
+        {
+          "id": "EVT-104-TASK-1",
+          "title": "decoration",
+          "done": true
+        },
+        {
+          "id": "EVT-104-TASK-2",
+          "title": "food stalls",
+          "done": false
+        },
+        {
+          "id": "EVT-104-TASK-3",
+          "title": "games",
+          "done": true
+        },
+        {
+          "id": "EVT-104-TASK-4",
+          "title": "sitting",
+          "done": true
+        }
+      ]
+    },
+    {
+      "id": "EVT-105",
+      "name": "fest",
+      "date": "2026-05-26",
+      "venue": "hall",
+      "assignedUserId": "USR-5",
+      "tasks": [
+        {
+          "id": "EVT-105-TASK-1",
+          "title": "food catering",
+          "done": false
+        },
+        {
+          "id": "EVT-105-TASK-2",
+          "title": "decoration",
+          "done": false
+        },
+        {
+          "id": "EVT-105-TASK-3",
+          "title": "invitation",
+          "done": false
+        },
+        {
+          "id": "EVT-105-TASK-4",
+          "title": "posters",
+          "done": false
+        }
+      ],
+      "workerAssignments": [
+        {
+          "id": "WRK-1-decorator",
+          "role": "Decorator",
+          "workerId": "WRK-1"
+        }
+      ]
+    },
+    {
+      "id": "EVT-106",
+      "name": "college day",
+      "date": "2026-07-27",
+      "venue": "college ground",
+      "assignedUserId": "USR-3",
+      "tasks": [
+        {
+          "id": "EVT-106-TASK-1",
+          "title": "food",
+          "done": false
+        },
+        {
+          "id": "EVT-106-TASK-2",
+          "title": "decoration",
+          "done": false
+        }
+      ],
+      "workerAssignments": []
+    }
+  ]
+}

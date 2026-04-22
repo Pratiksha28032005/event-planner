@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css', v='theme-sync-1') }}">
+</head>
+<body data-dashboard="user" data-theme="dark">
+  <main class="dashboard-shell">
+    <div class="dashboard-backdrop dashboard-backdrop-one"></div>
+    <div class="dashboard-backdrop dashboard-backdrop-two"></div>
+
+    <div class="workspace-shell">
+      <aside class="sidebar-panel glass-panel">
+        <div class="sidebar-brand">
+          <p class="eyebrow">User Event Space</p>
+          <h1>Your Dashboard</h1>
+          <p>Use the side menu to move between the quick overview and your assigned event boards.</p>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="Dashboard sections">
+          <button class="sidebar-link active" type="button" data-section-target="overview">
+            <span>Dashboard</span>
+            <small>Countdowns and progress</small>
+          </button>
+          <button class="sidebar-link" type="button" data-section-target="events">
+            <span>Assigned Events</span>
+            <small>Your task boards</small>
+          </button>
+        </nav>
+
+        <div class="sidebar-note">
+          <span class="panel-label">Cleaner flow</span>
+          <strong>Less clutter, more focus.</strong>
+          <p>Your summary and event list now live in separate views so the page is easier to scan.</p>
+        </div>
+      </aside>
+
+      <section class="dashboard-main">
+        <header class="topbar">
+          <div class="theme-switch" aria-label="Theme switcher">
+          <button class="theme-button active" type="button" data-theme="dark" aria-pressed="true">Dark</button>
+          <button class="theme-button" type="button" data-theme="light" aria-pressed="false">Light</button>
+          </div>
+          <div>
+            <p class="eyebrow">User Workspace</p>
+            <h1 id="welcome-title">User Dashboard</h1>
+          </div>
+          <div class="topbar-actions">
+            <span class="role-pill" id="role-pill"></span>
+            <button class="ghost-button" id="logout-button" type="button">Logout</button>
+          </div>
+        </header>
+
+        <section class="dashboard-section active" data-section="overview">
+          <section class="hero-panel">
+            <div class="hero-copy">
+              <p class="hero-kicker">Your event canvas</p>
+              <h2 id="hero-focus">Track every celebration with confidence.</h2>
+              <p id="hero-description">
+                Watch countdowns, follow task progress, and stay close to the team assigned to your event.
+              </p>
+            </div>
+            <div class="hero-insights">
+              <article class="hero-highlight">
+                <span class="hero-label" id="marquee-label">Next moment</span>
+                <strong id="marquee-value">Your timeline is clear</strong>
+                <p id="marquee-note">Assigned events will appear here with progress and worker coverage.</p>
+              </article>
+              <div class="hero-meta-grid">
+                <article class="hero-meta-card">
+                  <span>Assigned events</span>
+                  <strong id="hero-event-count">0</strong>
+                </article>
+                <article class="hero-meta-card">
+                  <span>Open tasks</span>
+                  <strong id="hero-open-count">0</strong>
+                </article>
+                <article class="hero-meta-card">
+                  <span>Next countdown</span>
+                  <strong id="hero-deadline">None</strong>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <section class="spotlight-grid" id="spotlight-grid"></section>
+          <section class="summary-grid" id="summary-grid"></section>
+        </section>
+
+        <section class="dashboard-section" data-section="events">
+          <section class="events-section user-events-section glass-panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Assigned celebrations</p>
+                <h2>Assigned Events</h2>
+              </div>
+              <p id="events-caption">Users can track checklist progress and see which approved workers support each event.</p>
+            </div>
+            <div class="events-grid" id="events-grid"></div>
+          </section>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/dashboard.js', v='theme-sync-1') }}"></script>
+</body>
+</html>
